@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--slider link-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <title>Erling Restaurant</title>
+  <style>
+    * {
+      font-family: century;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      outline: none;
+      text-transform: capitalize;
+      transition: all 0.4s linear;
+    }
+
+    :root {
+      --black: #333;
+      --light-color: #cdaa7c; 
+      --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,0.1);
+    }
+
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      padding: 1rem 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--box-shadow);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 30px;
+      color: red;
+    }
+
+    header .navbar a {
+      font-size: 1.7rem;
+      padding: 0.5rem 1.5rem;
+      color: var(--light-color);
+      border: 0.1rem solid transparent;
+    }
+
+
+      header .navbar a.active,
+      header .navbar a:hover {
+      color: #fff;
+      border: 0.1rem solid rgba(256, 170, 124, 0.2);
+    }
+
+    header .icons i {
+      margin-left: 0.5rem;
+      height: 4.5rem;
+      width: 4.5rem;
+      line-height: 4.5rem;
+      background: var(--light-color);
+      text-align: center;
+      font-size: 1.7rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    header .icons i:hover {
+      background: var(--light-color);
+      color: #fff;
+      transform: rotate(360deg);
+    }
+
+    header .icons #menu {
+      display: none;
+    }
+
+
+    /* slider style */
+
+    .home .home-slider .slide {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      justify-content: flex-start;
+    }
+
+    .home .home-slider .slide1 {
+      background: url(images/burger-7976098_960_720.jpg);
+    }
+    .home .home-slider .slide2 {
+      background: url(images/burger-4631996_960_720.jpg);
+    }
+    .home .home-slider .slide3 {
+      background: url(images/meat-6222139_960_720.jpg);
+    }
+
+    .home .home-slider .slide1,
+    .home .home-slider .slide2,
+    .home .home-slider .slide3 {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .home .home-slider .slide .content {
+      text-align: center;
+      padding-left: 9rem;
+    }
+
+    .home .home-slider .slide .content h3 {
+      color: var(--light-color);
+      font-size: 3rem;
+      font-weight: 400;
+    }
+
+    .home .home-slider .slide .content h1 {
+      color: #fff;
+      font-size: 8rem;
+    }
+
+    .home .home-slider .slide .content p {
+      color: #e6e7e7;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      padding: 5rem 0;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+      font-size: 1.7rem;
+      color: #fff;
+      border: 0.1rem solid rgba(205,170,124,0.2);
+      border-radius: 0.5rem;
+      background: transparent;
+      padding: 0.8rem 3rem;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: var(--light-color);
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: -100%;
+      transition: 0.5s;
+    }
+
+    .btn:hover.btn:before {
+      left: 0;
+    }
+
+    .food-img {
+      width: 18rem;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--light-color)!important;
+      width: 15px!important;
+      height: 15px!important;
+      border-radius: 0!important;
+    }
+
+    /*welcome page */
+    
+    section {
+      padding: 8rem 9%;
+    }
+
+    .heading {
+      text-align: center;
+      color: var(--black);
+      font-size: 4.5rem;
+      padding-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+    }
+
+    .sub-heading {
+      text-align: center;
+      color: var(--light-color);
+      font-size: 2.5rem;
+      padding: 0.5rem 2rem;
+      font-weight: 400;
+      margin-bottom: 4rem;
+      background: var(--black);
+      display: inline-block;
+    }
+
+    .welcome .box-container {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .welcome .box-container .box {
+      width: 33%;
+      background: var(--black);
+      box-shadow: var(--box-shadow);
+      text-align: center;
+      padding: 1%;
+    }
+
+    .welcome .box-container .box .image {
+      height: 25rem;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .welcome .box-container .box .image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .welcome .box-container .box .image:hover {
+      transform: scale(1.1);
+    }
+
+    .welcome .box-container .box .content {
+      padding: 2rem;
+      padding-top: 2rem;
+    }
+
+    .welcome .box-container .box .content h3 {
+      color: var(--light-color);
+      font-size: 2.2rem;
+      font-weight: 400;
+    }
+
+    .welcome .box-container .box .content p {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 400;
+      padding: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    /* our-menu */
+
+    .our-menu {
+      background: url(images/our-menu-bg.jpg);
+    }
+
+    .our-menu .menu-container {
+      padding: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50rem,2fr));
+      gap: 5rem 10rem;
+    }
+
+    .our-menu .menu-container .item .item-name {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      margin-top: 0.5rem;
+    }
+
+    .our-menu .menu-container .item .item-name h2 {
+      font-size: 3rem;
+      color: #e5e5e5;
+      font-weight: 400;
+    }
+
+    .our-menu .menu-container .item .item-menu {
+      padding: 5rem 0;
+    }
+
+    .our-menu .menu-container .item .item-menu h3 {
+      font-size: 2rem;
+      color: #e5e5e5;
+      font-weight: 400;
+      display: inline-block;
+    }
+
+    .our-menu .menu-container .item .item-menu span {
+      width: 37%;
+      display: inline-block;
+      border: 1px dotted #e5e5e5;
+    }
+
+    .our-menu .menu-container .item .item-menu ul {
+      display: flex;
+      font-size: 1.5rem;
+      list-style: none;
+      padding: 0.8rem 0;
+      font-weight: 400;
+    }
+
+    .our-menu .menu-container .item .item-menu ul li a {
+      color: #b9b9b9;
+    }
+
+    /* our chef */
+
+    .our-chef {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+      grid-gap: 1.15rem;
+    }
+
+    .our-chef .item .image img {
+      width: 100%;
+    }
+
+    .our-chef .item {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .our-chef .item:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      display: none;
+      top: 0;left: 0;right: 0;bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 5;
+    }
+
+    .our-chef .item:hover.item:before {
+      display: block;
+    }
+
+    .our-chef .item .chef-info {
+      position: absolute;
+      top: 130%;
+      left: 0;right: 0;bottom: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+      align-items: center;
+      transition: 1s;
+      cursor: pointer;
+    } 
+
+    .our-chef .item .chef-info h3 {
+      font-size: 1.7rem;
+      color: #fff;
+      padding: 0.8rem 0;
+      text-transform: uppercase;
+    }
+
+    .our-chef .item .chef-info span {
+      font-size: 1.7rem;
+      color: var(--light-color);
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+
+    .our-chef .item .chef-info ul {
+      list-style: none;
+      display: flex;
+      grid-gap: 2rem;
+      padding: 3rem 0;
+    }
+
+
+    .our-chef .item .chef-info ul li a {
+      color: #b9b9b9;
+      font-size: 1.8rem;
+    }
+
+    .our-chef .item:hover .chef-info {
+      top: 0;
+    }
+
+    /* reservation */
+
+    .reservation {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .reservation .image {
+      width: 55%;
+      background: url(images/book-a-table.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      padding-top: 9rem;
+    }
+
+    .reservation .form {
+      background: #181818;
+      width: 45%;
+      padding: 9rem 7%;
+    }
+
+    .reservation .form h1 {
+      color: #fff;
+    }
+
+    .reservation .form-holder {
+      display: flex;
+      grid-gap: 3rem;
+      width: 100%;
+    }
+
+    .reservation .form form input,
+    .reservation .form form select {
+      display: block;
+      margin: 2rem 0;
+      width: 100%;
+      background: none;
+      border-bottom: 0.1rem solid #b7b3b3;
+      color: #b7b3b3;
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
+
+    .reservation .form form input:placeholder {
+      color: #b7b3b3;
+    }
+
+    /* blog style */
+
+    .blog .box-container .box {
+      background: #fff;
+    }
+
+    .box .content {
+      text-align: left;
+      position: relative;
+    }
+
+    .blog .content h3,
+    .blog .content p,
+    .blog .content a {
+      color: #333!important;
+    }
+
+    .blog .content a {
+      font-size: 14px;
+      display: inline-block;
+      padding-top: 1rem;
+      text-decoration: underline;
+    }
+    
+    .blog .content img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    /*footer */
+
+    .footer .logo {
+      font-size: 30px;
+      color: red;
+    }
+
+    .footer {
+      background: #333;
+      text-align: center;
+      color: #b2b2b2;
+      font-size: 1.3rem;
+    }
+
+    .footer .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem,2fr));
+      color: #b2b2b2;
+      grid-gap: 1rem;
+      padding: 4rem 0;
+      border-bottom: 1px solid #b2b2b2;
+    }
+
+    .footer .container div {
+      padding: 0 7rem;
+    }
+    .footer .container h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      padding-bottom: 0.8rem;
+    }
+
+    .footer .container input {
+      width: 100%;
+      border: 1px solid #b2b2b2;
+      padding: 0.5rem 0.8rem;
+      background: transparent;
+      border-radius: 20px;
+    }
+
+    .footer .container ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+    }
+
+    .footer .container ul li a {
+      color: #b2b2b2;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+
+    .footer .container span {
+      display: block;
+    }
+
+    /* custom scroll bar */
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #333;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cdaa7c;
+    }
+
+    /*jump to top */
+
+    .topbtn {
+      position: fixed;
+      right: 2%;
+      bottom: 10%;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: #cdaa7c;
+      color: #fff;
+      cursor: pointer;
+    }
+
+
+
+
+    /*media querry */
+
+    @media (max-width: 991px){
+      html {
+        font-size: 55%;
+      }
+
+      header {
+        padding: 1rem 2rem;
+      }
+
+      .our-menu .menu-container {
+        grid-template-columns: repeat(auto-fit,minmax(30rem,2fr));
+      }
+
+      .our-menu .menu-container .item .item-menu span {
+        width: 15%;
+      }
+
+    }
+
+    @media (max-width: 768px){
+      /* navbar media querry */
+      header .icons #menu {
+        display: inline-block;
+      }
+
+      header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #eee;
+        border-top: 1rem solid rgba(205, 170, 124, 0.2);
+        border-bottom: 1rem solid rgba(205, 170, 124, 0.2);
+        padding: 1rem;
+        clip-path: polygon(0 0,100% 0,100% 0,0 0);
+      }
+
+      header .navbar.active {
+        clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+      }
+      header .navbar a {
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 2rem;
+        background: var(--black);
+      }
+
+      /* slider media querry */
+
+        .home .home-slider .slide {
+
+        justify-content: center;
+        height: 80vh;
+      }
+      .home .home-slider .slide .content {
+        padding: 0;
+      }
+
+      .home .home-slider .slide .content h1 {
+        font-size: 7rem;
+      }
+
+      /* welcome section */
+
+      .welcome .box-container {
+        flex-wrap: wrap;
+      }
+
+      .welcome .box-container .box {
+        width: 100%;
+      }
+
+      .reservation .image {
+        width: 0;
+      }
+
+      .reservation .form {
+        width: 100%;
+      }
+
+      .reservation .form .form-holder {
+        display: block;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <!---header-->
+  <header>
+    <a href="#" class="logo">ERLING <i class="fas fa-wine-glass"></i></a>
+
+    <nav class="navbar">
+      <ul>
+        <a href="#home" class="active">home</a>
+        <a href="#about">about</a>
+        <a href="#menu">menu</a>
+        <a href="#team">team</a>
+        <a href="#reservation">reservation</a>
+        <a href="#blog">blog</a>
+      </ul>
+    </nav>
+
+    <div class="icons">
+      <i class="fas fa-bars" id="menu"></i>
+      <i class="fas fa-search"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <!--slider section-->
+  
+  <div class="home" id="home">
+    <div class="mySwiper home-slider">
+      <div class="swiper-wrapper wrapper">
+        <div class="swiper-slide slide slide1">
+          <div class="content">
+           <img src="images/214-2148555_meal-organic-food-logo-png.png" class="food-img">
+
+           <h3>delicious royate</h3>
+           <h1>gift voucher</h1>
+           <p>give away your beloved customers</p>
+           <a href="#" class="btn">order now</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide slide slide2">
+          <div class="content">
+           <img src="images/214-2148555_meal-organic-food-logo-png.png" class="food-img">
+
+           <h3>sale of 10% this dish</h3>
+           <h1>the fresh</h1>
+           <p>food restaurant</p>
+           <a href="#" class="btn">order now</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide slide slide3">
+          <div class="content">
+           <img src="images/214-2148555_meal-organic-food-logo-png.png" class="food-img">
+
+           <h3>we are open</h3>
+           <h1>fresh fruits</h1>
+           <p>you will love it</p>
+           <a href="#" class="btn">order now</a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+      <!---about section-->
+
+  <section class="welcome" id="about">
+    <h1 class="heading">WELCOME TO ERLING</h1>
+    <center><h3 class="sub-heading">~ Luxury & Quality ~</h3></center>
+
+    <div class="box-container">
+      <div class="box">
+       <div class="image">
+        <img src="images/platting-4282016_960_720.jpg">
+       </div>
+
+       <div class="content">
+        <h3>PROFESSIONAL LEVEL</h3>
+        <P>nor again is there anyone who loves or pursues orbdesires to obtain pain of itself,
+          because it is pain,bbut because occasionally circunstances occur.
+        </P>
+
+        <a href="#" class="btn">Read More</a>
+       </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+         <img src="images/cook-2364221_960_720.jpg">
+        </div>
+ 
+        <div class="content">
+         <h3>FRESS FOOD GUARANTEED</h3>
+         <P>nor again is there anyone who loves or pursues orbdesires to obtain pain of itself,
+           because it is pain,bbut because occasionally circunstances occur.
+         </P>
+ 
+         <a href="#" class="btn">Read More</a>
+        </div>
+       </div>
+
+       <div class="box">
+        <div class="image">
+         <img src="images/spaghetti-6639970_960_720.jpg">
+        </div>
+ 
+        <div class="content">
+         <h3>THE MENU IS PLENTIFUL</h3>
+         <P>nor again is there anyone who loves or pursues orbdesires to obtain pain of itself,
+           because it is pain,bbut because occasionally circunstances occur.
+         </P>
+ 
+         <a href="#" class="btn">Read More</a>
+        </div>
+       </div>
+    </div>
+  </section>
+
+  <!--menu section-->
+
+  <section class="our-menu" id="menu">
+    <h1 class="heading">our food menu</h1>
+    <center><h3 class="sub-heading">~ see what we offer ~</h3></center>
+
+    <div class="menu-container">
+
+      <div class="item">
+        <div class="item-name">
+          <h2>Main Course</h2>
+          <img src="images/drinks.png ">
+        </div>
+
+        <div class="item-body">
+          <div class="item-menu">
+            <h3>Super-Delicious kpanla Fish</h3>
+            <span class="dots"></span>
+            <h3>$40</h3>
+
+            <ul>
+              <li><a href="#">Chicken</a></li>
+              <li><a href="#">Itallian</a></li>
+              <li><a href="#">Sausage</a></li>
+              <li><a href="#">Spinash</a></li>
+            </ul>
+          </div>
+
+          <div class="item-menu">
+            <h3>Super-Delicious kpanla Fish</h3>
+            <span class="dots"></span>
+            <h3>$26</h3>
+
+            <ul>
+              <li><a href="#">Mushroom</a></li>
+              <li><a href="#">Itallian</a></li>
+              <li><a href="#">Sausage</a></li>
+              <li><a href="#">Spinash</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-name">
+            <h2>Soups & Salads</h2>
+            <img src="images/drinks.png ">
+          </div>
+  
+          <div class="item-body">
+            <div class="item-menu">
+              <h3>Super-Delicious kpanla Fish</h3>
+              <span class="dots"></span>
+              <h3>$40</h3>
+  
+              <ul>
+                <li><a href="#">Chicken</a></li>
+                <li><a href="#">Itallian</a></li>
+                <li><a href="#">Sausage</a></li>
+                <li><a href="#">Spinash</a></li>
+              </ul>
+            </div>
+  
+            <div class="item-menu">
+              <h3>Super-Delicious kpanla Fish</h3>
+              <span class="dots"></span>
+              <h3>$26</h3>
+  
+              <ul>
+                <li><a href="#">Mushroom</a></li>
+                <li><a href="#">Itallian</a></li>
+                <li><a href="#">Sausage</a></li>
+                <li><a href="#">Spinash</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-name">
+              <h2>Drinks</h2>
+              <img src="images/drinks.png ">
+            </div>
+    
+            <div class="item-body">
+              <div class="item-menu">
+                <h3>Super-Delicious kpanla Fish</h3>
+                <span class="dots"></span>
+                <h3>$40</h3>
+    
+                <ul>
+                  <li><a href="#">Chicken</a></li>
+                  <li><a href="#">Itallian</a></li>
+                  <li><a href="#">Sausage</a></li>
+                  <li><a href="#">Spinash</a></li>
+                </ul>
+              </div>
+    
+              <div class="item-menu">
+                <h3>Super-Delicious kpanla Fish</h3>
+                <span class="dots"></span>
+                <h3>$26</h3>
+    
+                <ul>
+                  <li><a href="#">Mushroom</a></li>
+                  <li><a href="#">Itallian</a></li>
+                  <li><a href="#">Sausage</a></li>
+                  <li><a href="#">Spinash</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-name">
+                <h2>Deserts</h2>
+                <img src="images/drinks.png ">
+              </div>
+      
+              <div class="item-body">
+                <div class="item-menu">
+                  <h3>Super-Delicious kpanla Fish</h3>
+                  <span class="dots"></span>
+                  <h3>$40</h3>
+      
+                  <ul>
+                    <li><a href="#">Chicken</a></li>
+                    <li><a href="#">Itallian</a></li>
+                    <li><a href="#">Sausage</a></li>
+                    <li><a href="#">Spinash</a></li>
+                  </ul>
+                </div>
+      
+                <div class="item-menu">
+                  <h3>Super-Delicious kpanla Fish</h3>
+                  <span class="dots"></span>
+                  <h3>$26</h3>
+      
+                  <ul>
+                    <li><a href="#">Mushroom</a></li>
+                    <li><a href="#">Itallian</a></li>
+                    <li><a href="#">Sausage</a></li>
+                    <li><a href="#">Spinash</a></li>
+                  </ul>
+                </div>
+              </div>
+      </div>
+    </div>
+  </section>
+
+  <!--our team section-->
+
+  <section class="our-team" id="team">
+    <h1 class="heading">our tallented chef</h1>
+    <center><h3 class="sub-heading">~ Experienced & Enthusiasm ~</h3></center>
+
+    <div class="our-chef">
+      <div class="item">
+        <div class="image">
+          <img src="images/chef4.avif">
+        </div>
+
+        <div class="chef-info">
+          <div>
+            <h3>Nathan Jones</h3>
+            <span>master chef</span>
+
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="image">
+          <img src="images/chef2.avif">
+        </div>
+
+        <div class="chef-info">
+          <div>
+            <h3>Phil Roberts</h3>
+            <span>master chef</span>
+
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="image">
+          <img src="images/chef3.avif">
+        </div>
+
+        <div class="chef-info">
+          <div>
+            <h3>Kaylor Riggs</h3>
+            <span>master chef</span>
+
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!---reservation-->
+
+  <div class="reservation" id="reservation">
+    <div class="image">
+
+    </div>
+
+    <div class="form">
+      <h1 class="heading">book a table</h1>
+      <center><h3 class="sub-heading">~ check out our place ~</h3></center>
+
+      <form>
+        <div class="form-holder">
+          <div>
+            <select>
+              <option>1 people</option>
+              <option>2 people</option>
+              <option>3 people</option>
+              <option>4 people</option>
+            </select>
+
+            <input type="text" name="" placeholder="Time">
+            <input type="text" name="" placeholder="Phone">
+          </div>
+
+          <div>
+            <input type="text" name="" placeholder="Date">
+            <input type="text" name="" placeholder="Name">
+            <input type="email" name="" placeholder="Email">
+          </div>
+        </div>
+        <center><a href="#" class="btn">Book now</a></center>
+      </form>
+    </div>
+  </div>
+
+   <!---news section-->
+
+    <section class="blog welcome" id="blog">
+      <h1 class="heading">latest news</h1>
+      <center><h3 class="sub-heading">~ Great articles ~</h3></center>
+
+      <div class="box-container">
+        <div class="box">
+          <div class="image">
+            <img src="images/post-thumb-4.jpg">
+          </div>
+
+          <div class="content">
+            <h3>PROFESSIONAL LEVEL</h3>
+            <P>nor again is there anyone who loves or pursues or desires to obtain
+              pain of itself, because it is pain, but because ocassionally circumstances occur.
+            </P>
+            <a href="#">READ MORE</a>
+            <img src="images/post-body-bg-1.png">
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="image">
+            <img src="images/post-thumb-5.jpg">
+          </div>
+
+          <div class="content">
+            <h3>FRESS FOOD GUARANTEED</h3>
+            <P>nor again is there anyone who loves or pursues or desires to obtain
+              pain of itself, because it is pain, but because ocassionally circumstances occur.
+            </P>
+            <a href="#">READ MORE</a>
+            <img src="images/post-body-bg-2.png">
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="image">
+            <img src="images/post-thumb-6.jpg">
+          </div>
+
+          <div class="content">
+            <h3>THE MENU IS PLENTIFUL</h3>
+            <P>nor again is there anyone who loves or pursues or desires to obtain
+              pain of itself, because it is pain, but because ocassionally circumstances occur.
+            </P>
+            <a href="#">READ MORE</a>
+            <img src="images/post-body-bg-3.png">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!--footer-->
+    <section class="footer">
+      <a href="#" class="logo">ERLING <i class="fas fa-wine-glass"></i></a>
+
+      <div class="container">
+        <div>
+          <h3>ABOUT US</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+             Pariatur nostrum similique quas illum minus, ipsa nemo voluptatum ea dolore, 
+            aspernatur molestiae quasi porro ad id accusamus quisquam!</p>
+        </div>
+
+        <div>
+          <h3>GET NEWS & OFFERS</h3>
+          <input type="email" name="" placeholder="Enter Your Email">
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>CONTACT US</h3>
+          <span>EmmyVitamin</span>
+          <span>08130786383</span>
+          <span>eemmanuelodili@gmail.com</span>
+        </div>
+      </div>
+
+      <p>&copy; 2023 Reserved by EmmyVitamin</p>
+    </section>
+
+    <!--jump to top-->
+
+    <a href="#"><button class="topbtn"><i class="fa-solid fa-angle-up"></i></button></a>
+
+
+
+
+
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <!-- Initialize Swiper -->
+  
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+  
+  <script type="text/javascript" src="script.js"></script>
+   
+
+</body>
+</html>
